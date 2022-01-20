@@ -66,6 +66,14 @@ func Find(name string) (interface{}, bool) {
 	return o.Value, ok
 }
 
+func FindWithoutLock(name string) (interface{}, bool) {
+	o, ok := _g.FindWithoutLock(name)
+	if !ok || o == nil || o.Value == nil {
+		return nil, false
+	}
+	return o.Value, ok
+}
+
 func GraphLen() int {
 	return _g.Len()
 }
