@@ -113,7 +113,9 @@ func (g *Graph) Find(name string) (*Object, bool) {
 	defer g.l.RUnlock()
 	return g.find(name)
 }
-
+func (g *Graph) FindWithoutLock(name string) (*Object, bool) {
+	return g.find(name)
+}
 func (g *Graph) find(name string) (*Object, bool) {
 	f, ok := g.named.Get(name)
 	if !ok {
